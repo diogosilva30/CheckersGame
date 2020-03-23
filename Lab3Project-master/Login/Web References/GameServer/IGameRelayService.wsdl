@@ -1,0 +1,525 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:http="http://schemas.microsoft.com/ws/06/2004/policy/http" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:tns="https://gamerelay.proj.writecode.link/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" name="IGameRelayService" targetNamespace="https://gamerelay.proj.writecode.link/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xs:schema elementFormDefault="qualified" targetNamespace="https://gamerelay.proj.writecode.link/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xs:import namespace="http://schemas.datacontract.org/2004/07/System" />
+      <xs:element name="Ping">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="1" name="s" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="PingResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="1" name="PingResult" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="SetupServer">
+        <xs:complexType>
+          <xs:sequence />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="SetupServerResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="1" name="SetupServerResult" type="tns:ServerInfo" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetServerList">
+        <xs:complexType>
+          <xs:sequence />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetServerListResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="1" name="GetServerListResult" nillable="true" type="tns:ArrayOfServerInfo" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="JoinServer">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="1" name="GameId" type="xs:string" />
+            <xs:element minOccurs="0" maxOccurs="1" name="playerInfo" type="tns:PlayerInfo" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="JoinServerResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="1" maxOccurs="1" name="JoinServerResult" type="xs:boolean" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetGameStatus">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="1" name="GameId" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetGameStatusResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="1" name="GetGameStatusResult" type="tns:GameStatus" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetGameData">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="1" name="GameId" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetGameDataResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="1" name="GetGameDataResult" type="tns:GameDetail" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="SetPlayerReady">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="1" name="GameId" type="xs:string" />
+            <xs:element minOccurs="0" maxOccurs="1" name="PlayerId" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="SetPlayerReadyResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="1" maxOccurs="1" name="SetPlayerReadyResult" type="xs:boolean" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CanPlayerPlay">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="1" name="GameId" type="xs:string" />
+            <xs:element minOccurs="0" maxOccurs="1" name="PlayerId" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CanPlayerPlayResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="1" maxOccurs="1" name="CanPlayerPlayResult" type="xs:boolean" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="SendCommand">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="1" name="command" type="tns:GameCommand" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="SendCommandResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="1" maxOccurs="1" name="SendCommandResult" type="xs:boolean" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ConfirmCommand">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="1" name="CommandId" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ConfirmCommandResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="1" maxOccurs="1" name="ConfirmCommandResult" type="xs:boolean" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetLastCommand">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="1" name="GameId" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetLastCommandResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="1" name="GetLastCommandResult" type="tns:GameCommand" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetAllGameCommands">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="1" name="GameId" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetAllGameCommandsResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="1" name="GetAllGameCommandsResult" nillable="true" type="tns:ArrayOfGameCommand" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="SetGameEnd">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="1" name="GameId" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="SetGameEndResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="1" maxOccurs="1" name="SetGameEndResult" type="xs:boolean" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:complexType name="ServerInfo">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="GameId" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="ServerName" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="ServerStarted" type="xs:dateTime" />
+          <xs:element minOccurs="1" maxOccurs="1" name="PlayersCount" type="xs:int" />
+          <xs:element minOccurs="1" maxOccurs="1" name="PlayersReady" type="xs:int" />
+          <xs:element minOccurs="0" maxOccurs="1" name="ServerState" type="tns:GameState" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ServerInfo" nillable="true" type="tns:ServerInfo" />
+      <xs:complexType name="ArrayOfServerInfo">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="ServerInfo" nillable="true" type="tns:ServerInfo" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfServerInfo" nillable="true" type="tns:ArrayOfServerInfo" />
+      <xs:complexType name="PlayerInfo">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="PlayerId" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Username" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Name" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="IsReady" type="xs:boolean" />
+          <xs:element minOccurs="0" maxOccurs="1" name="PhotoBytes" type="xs:base64Binary" />
+          <xs:element minOccurs="1" maxOccurs="1" name="IsFirst" type="xs:boolean" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Country" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="GamesWonStats" type="xs:int" />
+          <xs:element minOccurs="1" maxOccurs="1" name="GamesStartedStats" type="xs:int" />
+          <xs:element minOccurs="1" maxOccurs="1" name="GamesLostStats" type="xs:int" />
+          <xs:element minOccurs="1" maxOccurs="1" name="GamesAbandonedStats" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="PlayerInfo" nillable="true" type="tns:PlayerInfo" />
+      <xs:complexType name="GameStatus">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="GameId" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Status" type="tns:GameState" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="GameStatus" nillable="true" type="tns:GameStatus" />
+      <xs:complexType name="GameDetail">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="Players" nillable="true" type="tns:ArrayOfPlayerInfo" />
+          <xs:element minOccurs="0" maxOccurs="1" name="GameId" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="ServerName" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="ServerStarted" type="xs:dateTime" />
+          <xs:element minOccurs="1" maxOccurs="1" name="PlayersCount" type="xs:int" />
+          <xs:element minOccurs="1" maxOccurs="1" name="PlayersReady" type="xs:int" />
+          <xs:element minOccurs="0" maxOccurs="1" name="ServerState" type="tns:GameState" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="GameDetail" nillable="true" type="tns:GameDetail" />
+      <xs:complexType name="GameCommand">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="CommandId" type="xs:int" />
+          <xs:element minOccurs="0" maxOccurs="1" name="GameId" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="PlayerId" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="CommandData" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="CommandAccepted" type="xs:boolean" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="GameCommand" nillable="true" type="tns:GameCommand" />
+      <xs:complexType name="ArrayOfGameCommand">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="GameCommand" nillable="true" type="tns:GameCommand" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfGameCommand" nillable="true" type="tns:ArrayOfGameCommand" />
+      <xs:complexType name="GameState">
+        <xs:sequence />
+      </xs:complexType>
+      <xs:element name="GameState" nillable="true" type="tns:GameState" />
+      <xs:complexType name="ArrayOfPlayerInfo">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="PlayerInfo" nillable="true" type="tns:PlayerInfo" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfPlayerInfo" nillable="true" type="tns:ArrayOfPlayerInfo" />
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="IGameRelayService_Ping_InputMessage">
+    <wsdl:part name="parameters" element="tns:Ping" />
+  </wsdl:message>
+  <wsdl:message name="IGameRelayService_Ping_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PingResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGameRelayService_SetupServer_InputMessage">
+    <wsdl:part name="parameters" element="tns:SetupServer" />
+  </wsdl:message>
+  <wsdl:message name="IGameRelayService_SetupServer_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SetupServerResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGameRelayService_GetServerList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetServerList" />
+  </wsdl:message>
+  <wsdl:message name="IGameRelayService_GetServerList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetServerListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGameRelayService_JoinServer_InputMessage">
+    <wsdl:part name="parameters" element="tns:JoinServer" />
+  </wsdl:message>
+  <wsdl:message name="IGameRelayService_JoinServer_OutputMessage">
+    <wsdl:part name="parameters" element="tns:JoinServerResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGameRelayService_GetGameStatus_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetGameStatus" />
+  </wsdl:message>
+  <wsdl:message name="IGameRelayService_GetGameStatus_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetGameStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGameRelayService_GetGameData_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetGameData" />
+  </wsdl:message>
+  <wsdl:message name="IGameRelayService_GetGameData_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetGameDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGameRelayService_SetPlayerReady_InputMessage">
+    <wsdl:part name="parameters" element="tns:SetPlayerReady" />
+  </wsdl:message>
+  <wsdl:message name="IGameRelayService_SetPlayerReady_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SetPlayerReadyResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGameRelayService_CanPlayerPlay_InputMessage">
+    <wsdl:part name="parameters" element="tns:CanPlayerPlay" />
+  </wsdl:message>
+  <wsdl:message name="IGameRelayService_CanPlayerPlay_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CanPlayerPlayResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGameRelayService_SendCommand_InputMessage">
+    <wsdl:part name="parameters" element="tns:SendCommand" />
+  </wsdl:message>
+  <wsdl:message name="IGameRelayService_SendCommand_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SendCommandResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGameRelayService_ConfirmCommand_InputMessage">
+    <wsdl:part name="parameters" element="tns:ConfirmCommand" />
+  </wsdl:message>
+  <wsdl:message name="IGameRelayService_ConfirmCommand_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ConfirmCommandResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGameRelayService_GetLastCommand_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetLastCommand" />
+  </wsdl:message>
+  <wsdl:message name="IGameRelayService_GetLastCommand_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetLastCommandResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGameRelayService_GetAllGameCommands_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllGameCommands" />
+  </wsdl:message>
+  <wsdl:message name="IGameRelayService_GetAllGameCommands_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllGameCommandsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGameRelayService_SetGameEnd_InputMessage">
+    <wsdl:part name="parameters" element="tns:SetGameEnd" />
+  </wsdl:message>
+  <wsdl:message name="IGameRelayService_SetGameEnd_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SetGameEndResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IGameRelayService">
+    <wsdl:operation name="Ping">
+      <wsdl:input message="tns:IGameRelayService_Ping_InputMessage" />
+      <wsdl:output message="tns:IGameRelayService_Ping_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SetupServer">
+      <wsdl:input message="tns:IGameRelayService_SetupServer_InputMessage" />
+      <wsdl:output message="tns:IGameRelayService_SetupServer_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetServerList">
+      <wsdl:input message="tns:IGameRelayService_GetServerList_InputMessage" />
+      <wsdl:output message="tns:IGameRelayService_GetServerList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="JoinServer">
+      <wsdl:input message="tns:IGameRelayService_JoinServer_InputMessage" />
+      <wsdl:output message="tns:IGameRelayService_JoinServer_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetGameStatus">
+      <wsdl:input message="tns:IGameRelayService_GetGameStatus_InputMessage" />
+      <wsdl:output message="tns:IGameRelayService_GetGameStatus_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetGameData">
+      <wsdl:input message="tns:IGameRelayService_GetGameData_InputMessage" />
+      <wsdl:output message="tns:IGameRelayService_GetGameData_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SetPlayerReady">
+      <wsdl:input message="tns:IGameRelayService_SetPlayerReady_InputMessage" />
+      <wsdl:output message="tns:IGameRelayService_SetPlayerReady_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CanPlayerPlay">
+      <wsdl:input message="tns:IGameRelayService_CanPlayerPlay_InputMessage" />
+      <wsdl:output message="tns:IGameRelayService_CanPlayerPlay_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SendCommand">
+      <wsdl:input message="tns:IGameRelayService_SendCommand_InputMessage" />
+      <wsdl:output message="tns:IGameRelayService_SendCommand_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ConfirmCommand">
+      <wsdl:input message="tns:IGameRelayService_ConfirmCommand_InputMessage" />
+      <wsdl:output message="tns:IGameRelayService_ConfirmCommand_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLastCommand">
+      <wsdl:input message="tns:IGameRelayService_GetLastCommand_InputMessage" />
+      <wsdl:output message="tns:IGameRelayService_GetLastCommand_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllGameCommands">
+      <wsdl:input message="tns:IGameRelayService_GetAllGameCommands_InputMessage" />
+      <wsdl:output message="tns:IGameRelayService_GetAllGameCommands_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SetGameEnd">
+      <wsdl:input message="tns:IGameRelayService_SetGameEnd_InputMessage" />
+      <wsdl:output message="tns:IGameRelayService_SetGameEnd_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IGameRelayService" type="tns:IGameRelayService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Ping">
+      <soap:operation soapAction="https://gamerelay.proj.writecode.link/IGameRelayService/Ping" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetupServer">
+      <soap:operation soapAction="https://gamerelay.proj.writecode.link/IGameRelayService/SetupServer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetServerList">
+      <soap:operation soapAction="https://gamerelay.proj.writecode.link/IGameRelayService/GetServerList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="JoinServer">
+      <soap:operation soapAction="https://gamerelay.proj.writecode.link/IGameRelayService/JoinServer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGameStatus">
+      <soap:operation soapAction="https://gamerelay.proj.writecode.link/IGameRelayService/GetGameStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGameData">
+      <soap:operation soapAction="https://gamerelay.proj.writecode.link/IGameRelayService/GetGameData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetPlayerReady">
+      <soap:operation soapAction="https://gamerelay.proj.writecode.link/IGameRelayService/SetPlayerReady" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CanPlayerPlay">
+      <soap:operation soapAction="https://gamerelay.proj.writecode.link/IGameRelayService/CanPlayerPlay" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendCommand">
+      <soap:operation soapAction="https://gamerelay.proj.writecode.link/IGameRelayService/SendCommand" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConfirmCommand">
+      <soap:operation soapAction="https://gamerelay.proj.writecode.link/IGameRelayService/ConfirmCommand" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLastCommand">
+      <soap:operation soapAction="https://gamerelay.proj.writecode.link/IGameRelayService/GetLastCommand" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllGameCommands">
+      <soap:operation soapAction="https://gamerelay.proj.writecode.link/IGameRelayService/GetAllGameCommands" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetGameEnd">
+      <soap:operation soapAction="https://gamerelay.proj.writecode.link/IGameRelayService/SetGameEnd" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="IGameRelayService">
+    <wsdl:port name="BasicHttpBinding_IGameRelayService" binding="tns:BasicHttpBinding_IGameRelayService">
+      <soap:address location="https://gamerelay.proj.writecode.link/GameRelayService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

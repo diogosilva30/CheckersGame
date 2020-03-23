@@ -1,0 +1,286 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{BDD9186F-0758-4B56-8020-A4758E9C25C8}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>LabProject</RootNamespace>
+    <AssemblyName>Login</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Bunifu_UI_v1.52, Version=1.3.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Bunifu_UI_v1.52.dll</HintPath>
+    </Reference>
+    <Reference Include="MetroFramework, Version=1.2.0.3, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MetroFramework.RunTime.1.2.0.3\lib\net40-Client\MetroFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="MetroFramework.Design, Version=1.2.0.3, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MetroFramework.Design.1.2.0.3\lib\net40\MetroFramework.Design.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="MetroFramework.Fonts, Version=1.2.0.3, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MetroFramework.Fonts.1.2.0.3\lib\net40\MetroFramework.Fonts.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Helpers\AuxFunctions.cs" />
+    <Compile Include="Models\Board.cs" />
+    <Compile Include="Controllers\ControllerGame.cs" />
+    <Compile Include="Controllers\ControllerLogin.cs" />
+    <Compile Include="Controllers\ControllerProfile.cs" />
+    <Compile Include="Delegations\Delegates.cs" />
+    <Compile Include="Models\Game.cs" />
+    <Compile Include="Models\GuestPlayer.cs" />
+    <Compile Include="ModelsActions\ModelGame.cs" />
+    <Compile Include="ModelsActions\ModelLogin.cs" />
+    <Compile Include="ModelsActions\ModelProfile.cs" />
+    <Compile Include="Models\Move.cs" />
+    <Compile Include="Models\Piece.cs" />
+    <Compile Include="Models\Player.cs" />
+    <Compile Include="Models\RealPlayer.cs" />
+    <Compile Include="Helpers\SecurePasswordHashed.cs" />
+    <Compile Include="Views\ViewAbout.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ViewAbout.Designer.cs">
+      <DependentUpon>ViewAbout.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ViewGame.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ViewGame.Designer.cs">
+      <DependentUpon>ViewGame.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ViewLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ViewLogin.Designer.cs">
+      <DependentUpon>ViewLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ViewOnlineLobbys.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ViewOnlineLobbys.Designer.cs">
+      <DependentUpon>ViewOnlineLobbys.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ViewPlayerProfile.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ViewPlayerProfile.Designer.cs">
+      <DependentUpon>ViewPlayerProfile.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ViewMainMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ViewMainMenu.Designer.cs">
+      <DependentUpon>ViewMainMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ViewRules.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ViewRules.Designer.cs">
+      <DependentUpon>ViewRules.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ViewSelectGameMode.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ViewSelectGameMode.Designer.cs">
+      <DependentUpon>ViewSelectGameMode.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ViewSignUp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ViewSignUp.Designer.cs">
+      <DependentUpon>ViewSignUp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PreLoader.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PreLoader.Designer.cs">
+      <DependentUpon>PreLoader.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\ViewStats.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ViewStats.Designer.cs">
+      <DependentUpon>ViewStats.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VirtualPlayer.cs" />
+    <Compile Include="Web References\GameServer\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Views\ViewAbout.resx">
+      <DependentUpon>ViewAbout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ViewGame.resx">
+      <DependentUpon>ViewGame.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ViewLogin.resx">
+      <DependentUpon>ViewLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ViewOnlineLobbys.resx">
+      <DependentUpon>ViewOnlineLobbys.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ViewPlayerProfile.resx">
+      <DependentUpon>ViewPlayerProfile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ViewMainMenu.resx">
+      <DependentUpon>ViewMainMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ViewRules.resx">
+      <DependentUpon>ViewRules.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ViewSelectGameMode.resx">
+      <DependentUpon>ViewSelectGameMode.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ViewSignUp.resx">
+      <DependentUpon>ViewSignUp.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PreLoader.resx">
+      <DependentUpon>PreLoader.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="Views\ViewStats.resx">
+      <DependentUpon>ViewStats.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <None Include="Web References\GameServer\GameCommand.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\GameServer\GameDetail.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\GameServer\GameStatus.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\GameServer\IGameRelayService.wsdl" />
+    <None Include="Web References\GameServer\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\GameServer\ServerInfo.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="MetroFramework.txt" />
+    <None Include="Resources\QueenBlue.bmp" />
+    <None Include="Resources\dama azul queen.png" />
+    <None Include="Resources\dama branca queen.png" />
+    <None Include="Resources\user icon.png" />
+    <None Include="Resources\Logo Federação Portuguesa de Damas.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.6.1 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferences Include="Web References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferenceUrl Include="https://gamerelay.proj.writecode.link/GameRelayService.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\GameServer\</RelPath>
+      <UpdateFromURL>https://gamerelay.proj.writecode.link/GameRelayService.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>Login_GameServer_IGameRelayService</CachedSettingsPropName>
+    </WebReferenceUrl>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
